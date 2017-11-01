@@ -8,7 +8,7 @@ Resources:
 
     Properties:
       AccessControl: PublicRead
-      BucketName: sir-foo-52857c5f58zj
+      BucketName: lambda-demo-pix
 
   ImageBucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -19,7 +19,7 @@ Resources:
             - Action: s3:GetObject
               Effect: Allow
               Principal: "*"
-              Resource: !Sub arn:aws:s3:::sir-foo-52857c5f58zj/*
+              Resource: !Sub arn:aws:s3:::lambda-demo-pix/*
 
   ResizedBucket:
     Type: AWS::S3::Bucket
@@ -27,7 +27,7 @@ Resources:
 
     Properties:
       AccessControl: PublicRead
-      BucketName: sir-foo-52857c5f58zj-resized
+      BucketName: lambda-demo-pix-resized
 
   ImageBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -38,7 +38,7 @@ Resources:
           - Action: s3:PutObject
             Effect: Allow
             Principal: "*"
-            Resource: !Sub arn:aws:s3:::sir-foo-52857c5f58zj-resized/*
+            Resource: !Sub arn:aws:s3:::lambda-demo-pix-resized/*
 
   ResizeFunction:
         Type: AWS::Serverless::Function
@@ -67,12 +67,12 @@ Resources:
           - s3
           - ''
           - ''
-          - sir-foo-52857c5f58zj
+          - lambda-demo-pix
 
   ImageBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: sir-foo-52857c5f58zj
+      BucketName: lambda-demo-pix
       Tags: []
       NotificationConfiguration:
         LambdaConfigurations:

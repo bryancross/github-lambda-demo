@@ -2,7 +2,7 @@
 
 set -o errexit
 
-stack_name=brkc-deployment-4
+stack_name=brkc-deployment-all
 #region="$(aws configure get region)"
 region="us-east-1"
 bucket_name="temp-serverless-resize-$(openssl rand -hex 8)"
