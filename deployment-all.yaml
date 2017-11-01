@@ -21,6 +21,25 @@ Resources:
               Principal: "*"
               Resource: !Sub arn:aws:s3:::sir-foo-52857c5f58zj/*
 
+  ResizedBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+
+    Properties:
+      AccessControl: PublicRead
+      BucketName: sir-foo-52857c5f58zj-resized
+
+  ImageBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ResizedBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:PutObject
+            Effect: Allow
+            Principal: "*"
+            Resource: !Sub arn:aws:s3:::sir-foo-52857c5f58zj-resized/*
+
   ResizeFunction:
         Type: AWS::Serverless::Function
         Properties:
