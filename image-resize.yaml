@@ -14,8 +14,10 @@ Resources:
   ImageBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
+
     Properties:
       AccessControl: PublicRead
+      BucketName: sir-foo-52857c5f58zj
       WebsiteConfiguration:
         IndexDocument: index.html
         RoutingRules:
@@ -30,11 +32,12 @@ Resources:
   ResizeFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./dist/function.zip
+      CodeUri: ./dist/github-lambda-demo-production.zip
       Handler: index.handler
       Runtime: nodejs6.10
       MemorySize: 1536
-      Timeout: 60
+      Timeout: 300
+      FunctionName: github-lambda-demo-production
       Environment:
         Variables:
           BUCKET: !Ref ImageBucket
