@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform:
+- AWS::Serverless-2016-10-31
+- AWS::CodeStar
+
+Parameters:
+  ProjectId:
+    Type: String
+    Description: AWS CodeStar projectID used to associate new resources to team members
+
+Resources:
+  GetHelloWorld:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: github-create-thumbnail-production
+      Handler: index.handler
+      MemorySize: 1024
+      Timeout: 300
+      Runtime: nodejs6.10
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]

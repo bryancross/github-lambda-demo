@@ -20,11 +20,11 @@
             "s3SchemaVersion":"1.0",
             "configurationId":"testConfigRule",
             "bucket":{
-               "name":"github-lambda-demo-pix",
+               "name":"github-lambda-pix-test",
                "ownerIdentity":{
                   "principalId":"AIDAJ6IDIJOAVQMRLTLDK"
                },
-               "arn":"arn:aws:s3:::github-lambda-demo-pix"
+               "arn":"arn:aws:s3:::github-lambda-pix-test"
             },
             "object":{
                "key":"octocats.jpg",
