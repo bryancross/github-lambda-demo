@@ -13,11 +13,13 @@ phases:
     commands:
         - npm install
         - grunt lambda_package
+        - ls dist
+        - ls -al
   build:
     commands:
         grunt lambda_package
 artifacts:
   files:
-      - dist/github-lambda-demo_latest.zip
+      - ./dist/github-lambda-demo_latest.zip
   #discard-paths: yes
   #base-directory: location
