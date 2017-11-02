@@ -14,8 +14,6 @@ phases:
         - npm install
         - npm install -g grunt-cli
         - grunt package
-        - ls dist
-        - ls -al
   build:
     commands:
         grunt lambda_package
