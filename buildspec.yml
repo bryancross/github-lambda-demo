@@ -18,6 +18,6 @@ phases:
         - grunt package
 artifacts:
   files:
-      - ./dist/github-lambda-demo_latest.zip
+      - **/*
   discard-paths: yes
   #base-directory: location
