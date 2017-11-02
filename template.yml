@@ -1,22 +1,83 @@
 AWSTemplateFormatVersion: 2010-09-09
-Transform:
-- AWS::Serverless-2016-10-31
-- AWS::CodeStar
-
-Parameters:
-  ProjectId:
-    Type: String
-    Description: AWS CodeStar projectID used to associate new resources to team members
-
+Transform: AWS::Serverless-2016-10-31
 Resources:
-  GetHelloWorld:
-    Type: AWS::Serverless::Function
+Resources:
+  ImageBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+
     Properties:
-      FunctionName: github-create-thumbnail-production
-      Handler: index.handler
-      MemorySize: 1024
-      Timeout: 300
-      Runtime: nodejs6.10
-      Role:
-        Fn::ImportValue:
-          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      AccessControl: PublicRead
+      BucketName: lambda-demo-pix
+
+  ImageBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: !Ref ImageBucket
+        PolicyDocument:
+          Statement:
+            - Action: s3:GetObject
+              Effect: Allow
+              Principal: "*"
+              Resource: !Sub arn:aws:s3:::lambda-demo-pix/*
+
+  ResizedBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+
+    Properties:
+      AccessControl: PublicRead
+      BucketName: lambda-demo-pix-resized
+
+  ImageBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ResizedBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:PutObject
+            Effect: Allow
+            Principal: "*"
+            Resource: !Sub arn:aws:s3:::lambda-demo-pix-resized/*
+
+  ResizeFunction:
+        Type: AWS::Serverless::Function
+        Properties:
+          CodeUri: s3://github-lambda-demo/artifacts/github-lambda-demo-production.zip
+          Handler: index.handler
+          Runtime: nodejs6.10
+          MemorySize: 1536
+          Timeout: 300
+          FunctionName: github-lambda-demo-production
+          Role: arn:aws:iam::377117578606:role/github_role_lambda
+
+  SearchLambdaPerm:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref ResizeFunction
+      Principal: s3.amazonaws.com
+      SourceAccount:
+        Ref: AWS::AccountId
+      SourceArn:
+        Fn::Join:
+        - ":"
+        - - arn
+          - aws
+          - s3
+          - ''
+          - ''
+          - lambda-demo-pix
+
+  ImageBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: lambda-demo-pix
+      Tags: []
+      NotificationConfiguration:
+        LambdaConfigurations:
+        - Event: s3:ObjectCreated:*
+          Function:
+            Fn::GetAtt:
+            - ResizeFunction
+            - Arn
