@@ -46,7 +46,7 @@ Resources:
           CodeUri: s3://github-lambda-demo/artifacts/github-lambda-demo-production.zip
           Handler: index.handler
           Runtime: nodejs6.10
-          MemorySize: 1536
+          MemorySize: 1024
           Timeout: 300
           FunctionName: github-lambda-demo-production
           Role: arn:aws:iam::377117578606:role/github_role_lambda
