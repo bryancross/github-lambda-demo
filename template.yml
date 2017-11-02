@@ -53,8 +53,8 @@ Resources:
           Role: arn:aws:iam::377117578606:role/github_role_lambda
           Environment:
                   Variables:
-                    BUCKET: !Ref ImageBucket
-                    URL: !GetAtt ImageBucket.WebsiteURL
+                    BUCKET: Bucket
+                    URL: Url
 
   SearchLambdaPerm:
     Type: AWS::Lambda::Permission
