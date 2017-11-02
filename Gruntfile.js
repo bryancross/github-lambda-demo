@@ -1,20 +1,7 @@
 var grunt = require('grunt');
 grunt.loadNpmTasks('grunt-aws-lambda');
-grunt.loadNpmTasks('grunt-mocha-test');
 
 grunt.initConfig({
-    mochaTest: {
-        testImageSize: {
-            options: {
-                reporter: 'spec',
-                quiet: false, // Optionally suppress output to standard out (defaults to false)
-                clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
-                noFail: false // Optionally set to not fail on failed tests (will still fail on other errors)
-            },
-            src: ['tests/testImageSize.js']
-        }
-    },
-
     lambda_invoke: {
         default: {
             options: {
