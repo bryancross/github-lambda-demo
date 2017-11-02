@@ -12,6 +12,7 @@ phases:
   install:
     commands:
         - npm install
+        - npm install -g grunt-cli
         - grunt package
         - ls dist
         - ls -al
