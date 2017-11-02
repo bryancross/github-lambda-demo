@@ -51,6 +51,10 @@ Resources:
           Timeout: 300
           FunctionName: github-lambda-demo-production
           Role: arn:aws:iam::377117578606:role/github_role_lambda
+          Environment:
+                  Variables:
+                    BUCKET: !Ref ImageBucket
+                    URL: !GetAtt ImageBucket.WebsiteURL
 
   SearchLambdaPerm:
     Type: AWS::Lambda::Permission
