@@ -6,6 +6,7 @@ stack_name=brkc-deployment-all
 #region="$(aws configure get region)"
 region="us-east-1"
 bucket_name="temp-serverless-resize-$(openssl rand -hex 8)"
+#echo "Bucket name: " $bucket_name
 account_id="$(aws sts get-caller-identity --query Account --output text \
   | xargs echo -n)"
 
@@ -18,7 +19,7 @@ aws s3 mb "s3://${bucket_name}"
 
 aws cloudformation package \
   --output-template-file=deploy/output.yaml \
-  --template-file=deployment-all.yaml \
+  --template-file=template.yml \
   --s3-bucket="${bucket_name}" \
 
 aws cloudformation deploy \

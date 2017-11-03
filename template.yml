@@ -2,11 +2,9 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
 Resources:
-Resources:
   ImageBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
-
     Properties:
       AccessControl: PublicRead
       BucketName: lambda-demo-pix
@@ -25,7 +23,6 @@ Resources:
   ResizedBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
-
     Properties:
       AccessControl: PublicRead
       BucketName: lambda-demo-pix-resized
@@ -44,7 +41,7 @@ Resources:
   ResizeFunction:
         Type: AWS::Serverless::Function
         Properties:
-          CodeUri: s3://github-lambda-demo/artifacts/github-lambda-demo-production.zip
+          #CodeUri: ./dist/github-lambda-demo_latest.zip
           Handler: index.handler
           Runtime: nodejs6.10
           MemorySize: 1024
