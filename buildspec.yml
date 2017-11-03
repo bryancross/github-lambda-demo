@@ -13,9 +13,6 @@ phases:
     commands:
         - npm install
         - npm install -g grunt-cli
-  build:
-    commands:
-        - grunt package
 artifacts:
   files:
       - '**/*'
