@@ -42,7 +42,7 @@ Resources:
         Type: AWS::Serverless::Function
         Properties:
           #CodeUri: s3://github-lambda-demo/artifacts/github-lambda-demo-production.zip
-          CodeUri: .
+          CodeUri: s3://github-lambda-demo/github-lambda-demo-build
           Handler: index.handler
           Runtime: nodejs6.10
           MemorySize: 1024
