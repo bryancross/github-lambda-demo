@@ -30,6 +30,14 @@ Resources:
       AccessControl: PublicRead
       BucketName: lambda-demo-pix-resized
 
+  FakeBucket:
+      Type: AWS::S3::Bucket
+      DeletionPolicy: Retain
+
+      Properties:
+        AccessControl: PublicRead
+        BucketName: i-shouldnt-have-to-do-this
+
   ImageBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
