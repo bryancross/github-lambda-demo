@@ -28,7 +28,7 @@ aws cloudformation deploy \
   --capabilities=CAPABILITY_NAMED_IAM
 
 aws s3 rb --force "s3://${bucket_name}"
-
+echo "Bucket Name: " $bucket_name
 #aws cloudformation describe-stacks \
 #  --stack-name "${stack_name}" \
 #  --query Stacks[].Outputs \

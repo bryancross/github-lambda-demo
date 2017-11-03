@@ -12,7 +12,9 @@ phases:
   install:
     commands:
         - npm install
-        - npm install -g grunt-cli
+        - - aws cloudformation package --template-file template.yaml --s3-bucket github-lambda-demo
+                                             --output-template-file NewSamTemplate.yaml
+
 artifacts:
   files:
       - '**/*'
