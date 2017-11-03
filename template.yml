@@ -49,7 +49,7 @@ Resources:
   ResizeFunction:
         Type: AWS::Serverless::Function
         Properties:
-          #CodeUri: ./dist/github-lambda-demo_latest.zip
+          CodeUri: ./dist/github-lambda-demo_latest.zip
           Handler: index.handler
           Runtime: nodejs6.10
           MemorySize: 1024
