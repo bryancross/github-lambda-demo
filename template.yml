@@ -7,7 +7,7 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       AccessControl: PublicRead
-      BucketName: lambda-demo-pix
+      BucketName: lambda-demo-pix-11
 
   ImageBucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -18,14 +18,14 @@ Resources:
             - Action: s3:GetObject
               Effect: Allow
               Principal: "*"
-              Resource: !Sub arn:aws:s3:::lambda-demo-pix/*
+              Resource: !Sub arn:aws:s3:::lambda-demo-pix-11/*
 
   ResizedBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     Properties:
       AccessControl: PublicRead
-      BucketName: lambda-demo-pix-resized
+      BucketName: lambda-demo-pix-resized-11
 
   ImageBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -36,7 +36,7 @@ Resources:
           - Action: s3:PutObject
             Effect: Allow
             Principal: "*"
-            Resource: !Sub arn:aws:s3:::lambda-demo-pix-resized/*
+            Resource: !Sub arn:aws:s3:::lambda-demo-pix-resized-11/*
 
   ResizeFunction:
         Type: AWS::Serverless::Function
@@ -71,7 +71,7 @@ Resources:
           - s3
           - ''
           - ''
-          - lambda-demo-pix
+          - lambda-demo-pix-11
 
   ImageBucket:
     Type: AWS::S3::Bucket
