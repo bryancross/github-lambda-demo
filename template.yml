@@ -7,7 +7,7 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       AccessControl: PublicRead
-      BucketName: lambda-demo-pix-11
+      BucketName: lambda-demo-pix
 
   ImageBucketPolicy:
       Type: AWS::S3::BucketPolicy
