@@ -76,7 +76,7 @@ Resources:
   ImageBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: lambda-demo-pix
+      BucketName: lambda-demo-pix-11
       Tags: []
       NotificationConfiguration:
         LambdaConfigurations:
