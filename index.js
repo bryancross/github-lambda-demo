@@ -9,7 +9,11 @@ var util = require('util');
 var MAX_WIDTH  = 100;
 var MAX_HEIGHT = 100;
 
-// get reference to S3 client
+// get reference to S3 client and stuff and more stuff
+// Even more stuff
+// and more stuff
+// And again
+// agand more more more
 var s3 = new AWS.S3();
 
 exports.handler = function(event, context, callback) {
