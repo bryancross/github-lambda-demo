@@ -11,6 +11,7 @@ var MAX_HEIGHT = 500;
 
 // get reference to S3 client and stuff and more stuff
 // Even more stuff
+// and more stuff
 var s3 = new AWS.S3();
 
 exports.handler = function(event, context, callback) {
