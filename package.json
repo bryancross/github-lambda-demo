@@ -11,13 +11,5 @@
     "gm": "^1.23.0",
     "imagemagick": "^0.1.3",
     "node-lambda": "^0.11.4"
-  },
-  "devDependencies": {
-    "grunt": "latest",
-    "grunt-cli": "^1.2.0",
-    "grunt-aws-lambda": "latest",
-    "mocha": "^1.20.0",
-    "npm": "^2.8.3",
-    "aws-sdk": "^2.36.0"
   }
 }
