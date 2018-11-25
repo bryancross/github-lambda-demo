@@ -6,8 +6,8 @@ var gm = require('gm')
 var util = require('util');
 
 // constants
-var MAX_WIDTH  = 125;
-var MAX_HEIGHT = 125;
+var MAX_WIDTH  = 225;
+var MAX_HEIGHT = 225;
 
 // get reference to S3 client and stuff and more stuff
 // Even more stuff
