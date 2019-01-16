@@ -4,7 +4,8 @@ phases:
     commands:
       - npm install
       - find ./node_modules -mtime +10950 -exec touch {} \;
-      - aws cloudformation package --template-file template.yml --s3-bucket github-lambda-demo
+      - aws cloudformation package --template-file template.yml 
+                                   --s3-bucket github-lambda-demo
                                    --output-template-file NewSamTemplate.yaml
 artifacts:
   type: zip
